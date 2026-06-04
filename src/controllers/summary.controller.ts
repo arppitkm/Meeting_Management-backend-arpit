@@ -5,6 +5,7 @@ import { getMeetingTranscript }
 
 import { generateMeetingSummary }
   from "../services/summary.service";
+import { AnyCaaRecord } from "node:dns";
 
 export async function summaryHandler(
   req: Request,
@@ -17,11 +18,10 @@ export async function summaryHandler(
       await getMeetingTranscript(meetingId);
 
     const transcriptText =
-  transcripts
-    .map(
-      (t, index) =>
-        `Segment ${index + 1}: ${t.speaker}: ${t.text}`
-    )
+  transcripts.map(
+  (t:any, index: number) =>
+    `Segment ${index + 1}: ${t.speaker}: ${t.text}`
+)
     .join("\n");
 
     const summaryText =
