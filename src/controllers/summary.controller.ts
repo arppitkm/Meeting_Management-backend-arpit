@@ -17,21 +17,34 @@ export async function summaryHandler(
       await getMeetingTranscript(meetingId);
 
     const transcriptText =
-      transcripts
-        .map(
-          (t) =>
-            `${t.speaker}: ${t.text}`
-        )
-        .join("\n");
+  transcripts
+    .map(
+      (t, index) =>
+        `Segment ${index + 1}: ${t.speaker}: ${t.text}`
+    )
+    .join("\n");
 
-    const summary =
+    const summaryText =
       await generateMeetingSummary(
         transcriptText
-      );
+    );
 
-    return res.json({
-      summary,
-    });
+    console.log("RAW:");
+console.log(summaryText);
+
+const cleaned =
+  summaryText
+    ?.replace(/```json\s*/gi, "")
+    .replace(/```\s*/g, "")
+    .trim();
+
+console.log("CLEANED:");
+console.log(cleaned);
+
+const summary =
+  JSON.parse(cleaned ?? "{}");
+
+return res.json(summary);
   } catch (error) {
     return res.status(500).json({
       message:

@@ -1,5 +1,7 @@
 import cron from "node-cron";
 import { prisma } from "../config/prisma";
+import { sendDiscordReminder }
+from "../services/discord.service";
 
 export async function processReminders() {
   const tomorrow = new Date();
@@ -25,10 +27,19 @@ export async function processReminders() {
       `[REMINDER] ${item.assignee} -> ${item.task}`
     );
 
+    if (item.dueDate){
+      await sendDiscordReminder(
+      item.task,
+      item.assignee,
+      item.dueDate
+      );
+    }
+    
+
     await prisma.reminderHistory.create({
       data: {
         actionItemId: item.id,
-        channel: "SYSTEM",
+        channel: "DISCORD",
       },
     });
   }

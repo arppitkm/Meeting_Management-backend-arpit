@@ -8,6 +8,19 @@ import { runRemindersHandler }
 
 const router = Router();
 
+/**
+ * @swagger
+ * /api/reminders/run:
+ *   post:
+ *     tags:
+ *       - Reminders
+ *     summary: Run reminder job manually
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Reminder job executed
+ */
 router.post(
   "/run",
   authenticate,

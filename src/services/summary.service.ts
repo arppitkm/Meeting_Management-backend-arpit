@@ -11,14 +11,44 @@ export async function generateMeetingSummary(
     await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents: `
-Summarize the following meeting transcript.
+You are analyzing a meeting transcript.
 
-Include:
-1. Key discussion points
-2. Decisions made
-3. Action items
+IMPORTANT:
+- Use only information explicitly present in the transcript.
+- Do not invent attendees.
+- Do not invent action items.
+- Do not invent decisions.
+- Do not invent outcomes.
+- Every insight must contain citations.
+- Citations must reference transcript segment numbers.
+
+Return ONLY valid JSON.
+
+Format:
+
+{
+  "summary": [
+    {
+      "text": "summary point",
+      "citations": [1]
+    }
+  ],
+  "decisions": [
+    {
+      "text": "decision",
+      "citations": [2]
+    }
+  ],
+  "actionItems": [
+    {
+      "text": "action item",
+      "citations": [3]
+    }
+  ]
+}
 
 Transcript:
+
 ${transcriptText}
 `,
     });
