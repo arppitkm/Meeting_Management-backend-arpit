@@ -144,13 +144,51 @@ npx prisma db pull
 
 ## Run Application
 
-Development Mode
+### Development Mode
 
+Start the development server:
+
+```bash
 npm run dev
+```
 
-Server URL
+Server URL:
 
+```text
 http://localhost:3000
+```
+
+---
+
+### Build Project
+
+Compile TypeScript:
+
+```bash
+npm run build
+```
+
+---
+
+### Production Mode
+
+Start the compiled application:
+
+```bash
+npm start
+```
+
+---
+
+### Deployed Application
+
+Base URL:
+
+https://meeting-management-backend-arpit.onrender.com
+
+Swagger Documentation:
+
+https://meeting-management-backend-arpit.onrender.com/api-docs
 
 ---
 
