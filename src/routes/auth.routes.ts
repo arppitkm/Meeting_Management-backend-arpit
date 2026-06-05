@@ -18,14 +18,23 @@
  *         application/json:
  *           schema:
  *             type: object
+ *             required:
+ *               - name
+ *               - email
+ *               - password
  *             properties:
+ *               name:
+ *                 type: string
+ *                 example: Arpit Mishra
  *               email:
  *                 type: string
+ *                 example: xyz@test.com
  *               password:
  *                 type: string
+ *                 example: xyz@123
  *     responses:
  *       201:
- *         description: User registered
+ *         description: User registered successfully
  */
 
 /**
@@ -41,11 +50,16 @@
  *         application/json:
  *           schema:
  *             type: object
+ *             required:
+ *               - email
+ *               - password
  *             properties:
  *               email:
  *                 type: string
+ *                example: xyz@test.com
  *               password:
  *                 type: string
+ *                example: xyz@123
  *     responses:
  *       200:
  *         description: Login successful
