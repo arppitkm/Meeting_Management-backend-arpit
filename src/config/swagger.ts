@@ -4,7 +4,7 @@ const options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Hintro Meeting Intelligence API",
+      title: "Hintro Meeting Management API",
       version: "1.0.0",
       description:
         "Backend assignment for Hintro Meeting Intelligence Service",

@@ -39,7 +39,9 @@ app.use("/api/evaluation", evaluationRoutes);
 app.use(
   "/api-docs",
   swaggerUi.serve,
-  swaggerUi.setup(swaggerSpec)
+  swaggerUi.setup(swaggerSpec, {
+    customSiteTitle: "Meeting-Management API",
+  })
 );
 
 app.get(

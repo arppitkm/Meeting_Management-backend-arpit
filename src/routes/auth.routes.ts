@@ -56,10 +56,10 @@
  *             properties:
  *               email:
  *                 type: string
- *                example: xyz@test.com
+ *                 example: xyz@test.com
  *               password:
  *                 type: string
- *                example: xyz@123
+ *                 example: xyz@123
  *     responses:
  *       200:
  *         description: Login successful
