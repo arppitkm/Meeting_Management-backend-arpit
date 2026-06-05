@@ -14,8 +14,6 @@ import {
 import transcriptRoutes from "./transcript.routes";
 import { summaryHandler } from "../controllers/summary.controller";
 
-
-
 const router = Router();
 
 /**
@@ -27,6 +25,23 @@ const router = Router();
  *     summary: Create meeting
  *     security:
  *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *               - meetingDate
+ *             properties:
+ *               title:
+ *                 type: string
+ *                 example: Sprint Planning
+ *               meetingDate:
+ *                 type: string
+ *                 format: date-time
+ *                 example: 2026-06-10T10:00:00Z
  *     responses:
  *       201:
  *         description: Meeting created
@@ -107,8 +122,8 @@ router.delete(
 );
 
 router.use(
-    "/:id/transcripts",
-    transcriptRoutes
+  "/:id/transcripts",
+  transcriptRoutes
 );
 
 /**

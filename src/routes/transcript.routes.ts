@@ -25,6 +25,26 @@ const router = Router({ mergeParams: true });
  *         required: true
  *         schema:
  *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - timestamp
+ *               - speaker
+ *               - text
+ *             properties:
+ *               timestamp:
+ *                 type: string
+ *                 example: "00:01:15"
+ *               speaker:
+ *                 type: string
+ *                 example: "Arpit"
+ *               text:
+ *                 type: string
+ *                 example: "We need to finish the dashboard feature by Friday."
  *     responses:
  *       201:
  *         description: Transcript added

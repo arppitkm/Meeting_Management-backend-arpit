@@ -24,6 +24,30 @@ router.use(authenticate);
  *     summary: Create action item
  *     security:
  *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - meetingId
+ *               - task
+ *               - assignee
+ *             properties:
+ *               meetingId:
+ *                 type: string
+ *                 example: cmq01qf7d00022bjazbg5ph31
+ *               task:
+ *                 type: string
+ *                 example: Complete dashboard implementation
+ *               assignee:
+ *                 type: string
+ *                 example: Arpit
+ *               dueDate:
+ *                 type: string
+ *                 format: date-time
+ *                 example: 2026-06-15T00:00:00Z
  *     responses:
  *       201:
  *         description: Action item created
@@ -60,6 +84,22 @@ router.get("/", listHandler);
  *         required: true
  *         schema:
  *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - status
+ *             properties:
+ *               status:
+ *                 type: string
+ *                 enum:
+ *                   - PENDING
+ *                   - IN_PROGRESS
+ *                   - COMPLETED
+ *                 example: IN_PROGRESS
  *     responses:
  *       200:
  *         description: Status updated
